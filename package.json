@@ -1,0 +1,32 @@
+{
+  "name": "techshastra-hub",
+  "version": "1.0.0",
+  "description": "TechShastra Hub - Full Stack Club Management Platform",
+  "private": true,
+  "scripts": {
+    "dev:all": "node scripts/dev-all.js",
+    "dev:frontend": "cd shastra-hub && npm run dev",
+    "dev:backend": "cd shastra-hub/backend && npm run dev",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:backend": "cd shastra-hub/backend && npm install",
+    "install:frontend": "cd shastra-hub && npm install",
+    "setup": "node scripts/setup.js",
+    "setup:db": "node scripts/setup-database.js",
+    "start:postgres": "powershell -ExecutionPolicy Bypass -File scripts/start-postgres.ps1",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd shastra-hub/backend && npm run build",
+    "build:frontend": "cd shastra-hub && npm run build",
+    "start": "node scripts/start-all.js",
+    "start:backend": "cd shastra-hub/backend && npm start",
+    "start:frontend": "cd shastra-hub && npm run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
+
