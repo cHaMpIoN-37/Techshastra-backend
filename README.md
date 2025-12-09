@@ -16,7 +16,7 @@ A comprehensive full-stack application for managing a tech club, including proje
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd techshastra
+   cd <repo-root>
    ```
 
 2. **Install dependencies**
@@ -25,7 +25,7 @@ A comprehensive full-stack application for managing a tech club, including proje
    npm install
 
    # Install backend dependencies
-   cd shastra-hub/backend
+   cd backend
    npm install
 
    # Install frontend dependencies
@@ -39,11 +39,11 @@ A comprehensive full-stack application for managing a tech club, including proje
    **Backend** (`shastra-hub/backend/.env`):
    ```env
    NODE_ENV=development
-   PORT=3000
-   API_URL=http://localhost:3000
+   PORT=5000
+   API_URL=http://localhost:5000
 
    # Database (REQUIRED)
-   DATABASE_URL=postgresql://user:password@localhost:5432/shastra_hub
+   DATABASE_URL=DATABASE_URL="postgresql://techuser:password@localhost:5432/techshastra?schema=public"
 
    # JWT Secrets (REQUIRED - Generate with: openssl rand -base64 32)
    JWT_SECRET=your-32-character-secret-here
@@ -58,7 +58,7 @@ A comprehensive full-stack application for managing a tech club, including proje
 
    **Frontend** (`shastra-hub/.env`):
    ```env
-   VITE_API_URL=http://localhost:3000/api
+   VITE_API_URL=http://localhost:5000/api
    ```
 
 4. **Set up the database**
@@ -93,9 +93,9 @@ A comprehensive full-stack application for managing a tech club, including proje
 
 6. **Access the application**
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000
-   - API Docs: http://localhost:3000/api-docs
-   - Health Check: http://localhost:3000/health
+   - Backend API: http://localhost:5000
+   - API Docs: http://localhost:5000/api-docs
+   - Health Check: http://localhost:5000/health
 
 ## 📁 Project Structure
 
@@ -135,7 +135,7 @@ The backend requires the following environment variables:
 | `DATABASE_URL` | ✅ Yes | PostgreSQL connection string |
 | `JWT_SECRET` | ✅ Yes | Secret for JWT tokens (min 32 chars) |
 | `JWT_REFRESH_SECRET` | ✅ Yes | Secret for refresh tokens (min 32 chars) |
-| `PORT` | No | Server port (default: 3000) |
+| `PORT` | No | Server port (default: 5000) |
 | `REDIS_URL` | No | Redis connection URL (optional) |
 | `FRONTEND_URL` | No | Frontend URL for CORS (default: http://localhost:5173) |
 
@@ -143,7 +143,7 @@ The backend requires the following environment variables:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `VITE_API_URL` | No | Backend API URL (default: http://localhost:3000/api) |
+| `VITE_API_URL` | No | Backend API URL (default: http://localhost:5000/api) |
 
 ## 🗄️ Database Setup
 
@@ -156,12 +156,12 @@ The backend requires the following environment variables:
 
 2. **Create database**
    ```sql
-   CREATE DATABASE shastra_hub;
+   CREATE DATABASE techshastra;
    ```
 
 3. **Update DATABASE_URL** in `shastra-hub/backend/.env`
    ```env
-   DATABASE_URL=postgresql://username:password@localhost:5432/shastra_hub
+   DATABASE_URL=DATABASE_URL="postgresql://techuser:password@localhost:5432/techshastra?schema=public"
    ```
 
 4. **Run migrations**
@@ -246,18 +246,18 @@ npm run lint
    - Test connection: `psql $DATABASE_URL`
 
 3. **Check port availability**
-   - Ensure port 3000 is not in use
+   - Ensure port 5000 is not in use
    - Change `PORT` in `.env` if needed
 
 ### Frontend can't connect to backend
 
 1. **Check backend is running**
-   - Visit http://localhost:3000/health
+   - Visit http://localhost:5000/health
    - Should return `{ "status": "ok" }`
 
 2. **Check API URL**
    - Verify `VITE_API_URL` in `shastra-hub/.env`
-   - Should be `http://localhost:3000/api`
+   - Should be `http://localhost:5000/api`
 
 3. **Check CORS**
    - Verify `FRONTEND_URL` in backend `.env` matches frontend URL
@@ -284,7 +284,7 @@ npm run lint
 ## 📚 API Documentation
 
 Once the backend is running, visit:
-- **Swagger UI**: http://localhost:3000/api-docs
+- **Swagger UI**: http://localhost:5000/api-docs
 
 ## 🧪 Testing
 
